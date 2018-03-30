@@ -1,0 +1,23 @@
+<div *ngIf="characters">
+  <div *ngFor='let character of characters' fxLayout="row wrap" fxLayoutGap="10px" class="container">
+    <div *ngFor='let item of character.items' fxLayout="column wrap" fxLayoutGap="10px" fxLayoutAlign="center">
+      <div fxLayout.gt-xs="row" fxLayout.xs="column">
+        <img src="https://www.bungie.net{{item.item.displayProperties.icon}}">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="characters">
+  <div *ngFor='let character of characters' fxlayout="row wrap" fxLayoutGap="10px" class="container">
+    <p>{{character.class.displayProperties.name}}</p>
+    <div *ngFor='let item of character.items' fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutALign="center">
+      <mat-card>
+        <img mat-card-img src="https://www.bungie.net{{item.item.displayProperties.icon}}">
+        <mat-card-content>
+          <p>{{item.item.displayProperties.name}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
