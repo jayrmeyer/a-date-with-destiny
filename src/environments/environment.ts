@@ -12,3 +12,7 @@ export const environment = {
   },
   production: false
 };
+
+
+// ng serve --ssl 1 --ssl-key "server.key" --ssl-cert "server.crt"
+

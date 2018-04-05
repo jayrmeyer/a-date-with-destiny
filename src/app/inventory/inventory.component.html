@@ -2,8 +2,22 @@
   <div *ngFor='let character of characters' fxLayout="row wrap" fxLayoutGap="10px" class="container">
     <div *ngFor='let item of character.items' fxLayout="column wrap" fxLayoutGap="10px" fxLayoutAlign="center">
       <div fxLayout.gt-xs="row" fxLayout.xs="column">
-        <img src="https://www.bungie.net{{item.item.displayProperties.icon}}">
+        <img fxFlex="calc(50% - 10px)" src="https://www.bungie.net{{item.item.displayProperties.icon}}">
       </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="characters">
+  <div *ngFor='let character of characters' fxlayout="row wrap" fxLayoutGap="10px" class="container">
+    <p>{{character.class.displayProperties.name}}</p>
+    <div *ngFor='let item of character.items' fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutALign="center">
+      <mat-grid-tile>
+        <img mat-card-img src="https://www.bungie.net{{item.item.displayProperties.icon}}">
+        <mat-grid-tile-footer>
+          <p>{{item.item.displayProperties.name}}</p>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
     </div>
   </div>
 </div>
