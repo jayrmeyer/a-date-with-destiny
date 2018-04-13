@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MaterialModule } from './material.module';
 
@@ -19,6 +20,7 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { PublicMilestonesComponent } from './public-milestones/public-milestones.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { AppRoutingModule } from './/app-routing.module';
     HomeComponent,
     InventoryComponent,
     PublicMilestonesComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    AppNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { AppRoutingModule } from './/app-routing.module';
     MaterialModule,
     HttpClientModule,
     FlexLayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule.forRoot()
   ],
   providers: [AuthService, BungieService, DestinyCacheService, ParseService, LoggedInUserService],
   bootstrap: [AppComponent]

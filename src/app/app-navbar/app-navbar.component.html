@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Dashboard</a>
+  <button class="navbar-toggler d-lg-none" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+    aria-controls="navbarsExampleDefault" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault" [ngbCollapse]="isCollapsed">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="home">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-item nav-link active" routerLink=publicMilestones>Milestones</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+      <li class="nav-item dropdown" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" ngbDropdownToggle>Dropdown</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <div *ngIf="!loggedIn">
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-success" type="button" (click)="onLoginClick()" placement="bottom-left" ngbTooltip="Still building out the sign in logic">Sign In</button>
+      </form>
+    </div>
+    <div *ngIf="loggedIn">
+      <ul class="navbar-nav my-2 my-lg-0">
+        <li class="nav-item dropdown" placement="bottom-right" ngbDropdown>
+          <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ngbDropdownToggle>
+            <i class="far fa-user" aria-hidden="true"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01" ngbDropdownMenu>
+            <button class="dropdown-item" ngbTooltip="Still building out the sign in logic" (click)="onLogoutClick()">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </button>
+            <a class="dropdown-item" routerLink="/bungie_user/{{authInfo.memberId}}">
+              <i class="fas fa-user-circle"></i>
+              <span>Bungie User Info</span>
+            </a>
+            <a class="dropdown-item" *ngIf="loggedInUserInfoCard" routerLink="/characters/{{loggedInUserInfoCard.membershipType}}/{{loggedInUserInfoCard.membershipId}}">
+              <i class="fas fa-users"></i>
+              <span>List of Characters</span>
+            </a>
+            <a class="dropdown-item" *ngIf="loggedInUserInfoCard" routerLink="/inventory/{{loggedInUserInfoCard.membershipType}}/{{loggedInUserInfoCard.membershipId}}">
+              <i class="fas fa-shopping-basket"></i>
+              <span>Manage Inventory</span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
